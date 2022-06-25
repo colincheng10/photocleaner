@@ -37,9 +37,11 @@ def get_urllist(basedirs):
                 url = os.path.join(dirpath,filename)
                 if os.path.isfile(url) == True and os.path.getsize(url) > 4096: 
                     urlname = os.path.basename(url)
-                    if urlname.endswith('.PNG') or urlname.endswith('.JPG') :
+                    if urlname.endswith('.PNG') or urlname.endswith('.JPG') or urlname.endswith('.jpg') \
+                        or urlname.endswith('.bmp') or urlname.endswith('.png') :
                         jpgList.append(url)
-                    elif urlname.endswith('.MOV') or urlname.endswith('.mp4') or urlname.endswith('.MP4') :
+                    elif urlname.endswith('.MOV') or urlname.endswith('.mp4') or urlname.endswith('.wmv') \
+                        or urlname.endswith('.m4v') or urlname.endswith('.MP4') or urlname.endswith('.AVI') :
                         movList.append(url)
                     else :
                         print("skip: %s", urlname)        
@@ -66,7 +68,7 @@ if __name__ == '__main__':
             print("repeat: ", a)
             print("origin: ", md5Dict[md5])
             #log.info("repeat: %s" %a)
-            #os.remove(a)
+            os.remove(a)
         else:
             md5Set.add(md5)
             md5Dict[md5] = a
@@ -83,7 +85,7 @@ if __name__ == '__main__':
             print("repeat: ", a)
             print("origin: ", md5Dict[md5])
             #log.info("repeat: %s" %a)
-            #os.remove(a)
+            os.remove(a)
         else:
             md5Set.add(md5)
             md5Dict[md5] = a
